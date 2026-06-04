@@ -37,23 +37,30 @@ body {
     top: 20px;
     right: 20px;
     z-index: 3000;
-    padding: 0.55rem 1.1rem;
+    
+    /* Змінюємо внутрішні відступи та додаємо flex для центрування картинки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.8rem; /* Трохи менші відступи, бо тепер там картинка */
+    
     border-radius: 999px;
     background: rgba(10, 10, 20, 0.75);
     border: 1px solid rgba(168, 85, 247, 0.6);
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.03em;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 12px 12px rgba(0, 0, 0, 0.35);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.floating-nav-logo {
+    height: 24px; 
+    width: auto;
+    display: block;
 }
 
 .casino-link:hover {
     transform: translateY(-2px);
     border-color: var(--accent);
-    box-shadow: 0 18px 36px rgba(168, 85, 247, 0.35);
+    box-shadow: 0px 0px 18px rgba(168, 85, 247, 0.35);
 }
 
 /* Navigation */
@@ -1419,6 +1426,30 @@ body {
     .promo-card, .game-copy {
         text-align: center !important;
     }
+
+
+    /* Зменшуємо логотипи на мобільному */
+    .hero-corner-logo {
+        top: 12px;
+        left: 12px;
+        width: 60px; /* Менший логотип на фото */
+    }
+
+    .casino-link {
+        top: 15px;
+        right: 15px;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .floating-nav-logo {
+        height: 30px; /* Трохи менший логотип у плаваючій кнопці */
+    }
+
+    .title-logo {
+        height: 5px; /* На телефоні робимо його трохи меншим */
+        margin-left: auto; /* Центруємо логотип разом із заголовком */
+        margin-right: auto;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1508,4 +1539,23 @@ body {
     font-size: 1.15rem;
     font-weight: 800;
     letter-spacing: 0.03em;
+}
+
+.hero-corner-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px; /* Змініть розмір під свій логотип (наприклад, 100px або 120px) */
+    height: auto;
+    z-index: 10;
+    /* Додаємо легку тінь, щоб логотип не зливався зі світлими частинами фото */
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4)); 
+}
+
+.title-logo {
+    display: block;
+    height: 135px; /* Висота логотипу. Змініть залежно від пропорцій вашої картинки */
+    width: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem; /* Відступ до неонової рамки */
 }
