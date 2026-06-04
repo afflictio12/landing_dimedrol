@@ -37,22 +37,23 @@ body {
     top: 20px;
     right: 20px;
     z-index: 3000;
-    
-    /* Змінюємо внутрішні відступи та додаємо flex для центрування картинки */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.4rem 0.8rem; /* Трохи менші відступи, бо тепер там картинка */
+    
+    /* Трохи збільшуємо відступи, щоб великому логотипу не було "тісно" */
+    padding: 0.6rem 1.2rem; 
     
     border-radius: 999px;
     background: rgba(10, 10, 20, 0.75);
     border: 1px solid rgba(168, 85, 247, 0.6);
-    box-shadow: 0 12px 12px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .floating-nav-logo {
-    height: 36px; 
+    /* БУЛО: height: 24px; */
+    height: 45px; /* СТАЛО: Збільшили майже вдвічі. Можете поставити 50px, якщо треба ще більше */
     width: auto;
     display: block;
 }
@@ -301,7 +302,7 @@ body {
 }
 
 .hero-tag:nth-child(1) { top: 8%; left: 2%; animation: chaos1 7s ease-in-out infinite; transform: rotate(-8deg); }
-.hero-tag:nth-child(2) { top: 12%; right: 4%; animation: chaos2 9s ease-in-out infinite; transform: rotate(12deg); }
+.hero-tag:nth-child(2) { top: 40%; right: 4%; animation: chaos2 9s ease-in-out infinite; transform: rotate(12deg); }
 .hero-tag:nth-child(3) { bottom: 10%; left: 3%; animation: chaos3 11s ease-in-out infinite; transform: rotate(-5deg); }
 
 @keyframes chaos1 {
@@ -1439,7 +1440,7 @@ body {
         top: 15px;
         right: 15px;
         padding: 0.3rem 0.6rem;
-    }
+    }пге 
 
     .floating-nav-logo {
         height: 36px; /* Трохи менший логотип у плаваючій кнопці */
