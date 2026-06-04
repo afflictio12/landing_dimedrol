@@ -52,7 +52,7 @@ body {
 }
 
 .floating-nav-logo {
-    height: 24px; 
+    height: 36px; 
     width: auto;
     display: block;
 }
@@ -1442,7 +1442,7 @@ body {
     }
 
     .floating-nav-logo {
-        height: 30px; /* Трохи менший логотип у плаваючій кнопці */
+        height: 36px; /* Трохи менший логотип у плаваючій кнопці */
     }
 
     .title-logo {
