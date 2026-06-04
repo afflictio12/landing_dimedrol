@@ -1,4 +1,3 @@
-// FAQ Toggle
 function toggleFAQ(button) {
     const question = button;
     const answer = button.nextElementSibling;
@@ -6,7 +5,6 @@ function toggleFAQ(button) {
     question.classList.toggle('active');
     answer.classList.toggle('show');
 
-    // Close other FAQs
     document.querySelectorAll('.faq-question').forEach(q => {
         if (q !== question) {
             q.classList.remove('active');
@@ -15,7 +13,6 @@ function toggleFAQ(button) {
     });
 }
 
-// Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
@@ -36,7 +33,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = window.matchMedia('(pointer: fine)').matches;
 
-// Navbar background on scroll
+
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (!navbar) {
@@ -49,17 +46,19 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Hero parallax
 const hero = document.querySelector('.hero');
 const heroBackground = document.querySelector('.hero-background');
 const heroOrbs = document.querySelector('.hero-orbs');
 if (hero && heroBackground && heroOrbs && finePointer && !prefersReducedMotion) {
     hero.addEventListener('mousemove', (event) => {
-        const rect = hero.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-        heroBackground.style.transform = `translate3d(${x * 20}px, ${y * 20}px, 0)`;
-        heroOrbs.style.transform = `translate3d(${x * -30}px, ${y * -30}px, 0)`;
+        // Оптимізовано за допомогою requestAnimationFrame для уникнення лагів
+        window.requestAnimationFrame(() => {
+            const rect = hero.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5;
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+            heroBackground.style.transform = `translate3d(${x * 20}px, ${y * 20}px, 0)`;
+            heroOrbs.style.transform = `translate3d(${x * -30}px, ${y * -30}px, 0)`;
+        });
     });
 
     hero.addEventListener('mouseleave', () => {
@@ -68,7 +67,6 @@ if (hero && heroBackground && heroOrbs && finePointer && !prefersReducedMotion) 
     });
 }
 
-// Animate elements on scroll
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -83,7 +81,6 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
-// Observe game cards, feature items, promo cards, the game highlight, and socials
 document.querySelectorAll('[data-reveal], .game-card, .feature-item, .promo-card, .game-frame, .social-btn').forEach(el => {
     if (!el.classList.contains('reveal')) {
         el.classList.add('reveal');
@@ -109,14 +106,13 @@ function attachTilt(element) {
         rect = rect || element.getBoundingClientRect();
         const relativeX = x - rect.left;
         const relativeY = y - rect.top;
-        // Reduced the multiplier from 12 to 8 for a slightly subtler, smoother tilt
         const rotateY = ((relativeX / rect.width) - 0.5) * 8; 
         const rotateX = ((relativeY / rect.height) - 0.5) * -8;
         
         element.style.setProperty('--tilt-x', `${rotateX}deg`);
         element.style.setProperty('--tilt-y', `${rotateY}deg`);
         
-        ticking = false; // Reset the lock once the frame is drawn
+        ticking = false; 
     };
 
     element.addEventListener('mouseenter', () => {
@@ -125,7 +121,6 @@ function attachTilt(element) {
     });
 
     element.addEventListener('mousemove', (event) => {
-        // Only request a new frame if we aren't already waiting for one
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 updateTilt(event.clientX, event.clientY);
@@ -146,18 +141,3 @@ if (finePointer && !prefersReducedMotion) {
     document.querySelectorAll('.tilt-single').forEach(el => attachTilt(el));
 }
 
-// Button glow effect on hover
-document.querySelectorAll('.cta-btn, .btn').forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
-        if (cursorGlow && finePointer) {
-            cursorGlow.style.filter = 'blur(8px)';
-        }
-    });
-    btn.addEventListener('mouseleave', function() {
-        if (cursorGlow && finePointer) {
-            cursorGlow.style.filter = 'blur(4px)';
-        }
-    });
-});
-
-console.log('LuxBet x Brice landing page loaded successfully!');

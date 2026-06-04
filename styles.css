@@ -512,19 +512,20 @@ body {
 }
 
 
+/* Робимо так, щоб усі елементи головного екрану з'являлися одночасно */
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
     color: var(--primary);
     text-shadow: 0 0 20px var(--primary);
-    animation: fadeInDown 0.8s ease-out;
+    animation: fadeInUp 0.8s ease-out both; /* Прибрали затримку і змінили напрямок */
 }
 
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: var(--text-light);
-    animation: fadeInUp 0.8s ease-out 0.2s both;
+    animation: fadeInUp 0.8s ease-out both; /* Прибрали затримку 0.2s */
 }
 
 .hero .hero-sub {
@@ -550,7 +551,7 @@ body {
     justify-content: center;
     transition: all 0.3s;
     box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
-    animation: fadeInUp 0.8s ease-out 0.4s both;
+    animation: fadeInUp 0.8s ease-out both; /* Прибрали затримку 0.4s */
     position: relative;
     overflow: hidden;
 }
